@@ -1,0 +1,32 @@
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<h1>Message board</h1>
+  <div id="display">
+
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+setInterval(function(){
+    $.ajax({
+        type: 'GET',
+        url : "/posts/{{user}}/",
+        success: function(response){
+            $("#display").empty();
+            for (var key in response.messages)
+            {
+                var temp="<div class='container darker'><b>"+response.messages[key].user+"</b><p>"+response.messages[key].value+"</p><span class='time-left'>"+response.messages[key].date+"</span></div>"+"<span class='time-left'>"+response.messages[key].image;
+                $("#display").append(temp);
+            }
+        },
+        error: function(response){
+            alert('An error occured')
+        }
+    });
+},1000);
+})
+</script>
+</html>
