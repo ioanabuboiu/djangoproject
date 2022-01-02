@@ -1,8 +1,5 @@
-from msilib.schema import ListView
 from chat.models import Room, Message
-from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
-from django.core.files.storage import FileSystemStorage
 from django.views.generic import ListView
 
 from django.shortcuts import render, redirect
@@ -11,6 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import LoginForm, RegisterForm
 
 # Create your views here.
+
 
 def home(request):
     return render(request, "home.html")
@@ -32,7 +30,7 @@ def checkview(request):
     if not Room.objects.filter(name=room).exists():
         new_room = Room.objects.create(name=room)
         new_room.save()
-    return redirect("/"+room+'/?username='+username)
+    return redirect("/" + room + '/?username=' + username)
 
 
 def send(request):
@@ -83,7 +81,6 @@ class MessageList(LoginRequiredMixin, ListView):
         return context
 
 
-
 User = get_user_model()
 
 # Create your views here.
@@ -129,5 +126,4 @@ def login_view(request):
 def logout_view(request):
     logout(request)  # request.user == anonymous
     return redirect("/login")
-
 

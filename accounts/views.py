@@ -34,7 +34,7 @@ def login_view(request):
         username = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")
         user = authenticate(request, username=username, password=password)
-        if user != None:
+        if user is not None:
             login(request, user)  # request.user == user
             return redirect("/chat")
             # attempt = request.session.get("attempt") or 0

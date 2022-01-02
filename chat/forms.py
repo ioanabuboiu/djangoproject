@@ -1,10 +1,11 @@
 from django import forms
 from django.contrib.auth import get_user_model
 
-#check for unique email and username
+# check for unique email and username
 
 
 User = get_user_model()
+
 
 class RegisterForm(forms.Form):
     username = forms.CharField()
