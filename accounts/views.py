@@ -36,7 +36,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user != None:
             login(request, user)  # request.user == user
-            return redirect("/posts")
+            return redirect("/chat")
             # attempt = request.session.get("attempt") or 0
             # request.session['attempt'] += 1
             # return redirect("/invalid-password")

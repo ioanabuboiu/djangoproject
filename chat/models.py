@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 import datetime
 from django.conf import settings
@@ -16,7 +17,10 @@ class Message(models.Model):
     aware_datetime = make_aware(naive_datetime)
     aware_datetime.tzinfo  # <UTC>
     date = models.DateTimeField(default=aware_datetime, blank=True)
-    user = models.CharField(max_length=1000000)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     room = models.CharField(max_length=1000000)
     image = models.CharField(max_length=1000000, blank=True)
+
+    def __str__(self):
+        return self.room
 

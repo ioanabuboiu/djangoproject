@@ -78,8 +78,9 @@ setInterval(function(){
             $("#display").empty();
             for (var key in response.messages)
             {
-                var temp="<div class='container darker'><b>"+response.messages[key].user+"</b><p>"+response.messages[key].value+"</p><span class='time-left'>"+response.messages[key].date+"</span></div>"+"<span class='time-left'>"+response.messages[key].image;
+                var temp="<div class='container darker'><b>"+response.messages[key].user_id+"</b><p>"+response.messages[key].value+"</p><span class='time-left'>"+response.messages[key].date;
                 $("#display").append(temp);
+
             }
         },
         error: function(response){
@@ -155,7 +156,7 @@ setInterval(function(){
          //alert(data)
       },
       error: function(data) {
-        alert(data)
+        alert(data.username)
       },
     });
     document.getElementById('message').value = ''

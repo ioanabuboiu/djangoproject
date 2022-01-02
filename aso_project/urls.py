@@ -20,9 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('login/', login_view),
-    path('logout/', logout_view),
-    path('register/', register_view),
+
     path('admin/', admin.site.urls),
     path('', include('chat.urls')),
     path('posts/', include('posts.urls')),
