@@ -44,6 +44,7 @@ RUN addgroup -S aso_project && adduser -S aso_project -G aso_project
 ENV HOME=/aso_project
 ENV APP_HOME=/aso_project/web
 RUN mkdir $APP_HOME
+RUN mkdir $APP_HOME/staticfiles
 WORKDIR $APP_HOME
 
 # install dependencies
